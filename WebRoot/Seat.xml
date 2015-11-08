@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Seats> 
+  <Seat> 
+    <Name>功夫</Name>  
+    <Time>8-00 9-45</Time>  
+    <SeatNumber> 
+      <num>1-5</num>  
+      <num>1-6</num>  
+      <num>2-1</num> 
+    </SeatNumber> 
+  </Seat>  
+  <Seat> 
+    <Name>功夫</Name>  
+    <Time>10-00 11-45</Time>  
+    <SeatNumber> 
+      <num>1-1</num>  
+      <num>3-4</num>  
+      <num>2-2</num>  
+      <num>1-6</num>  
+    </SeatNumber> 
+  </Seat>  
+  <Seat> 
+    <Name>澳门风云</Name>  
+    <Time>9-00 10-45</Time>  
+    <SeatNumber> 
+      <num>1-2</num>  
+      <num>1-3</num>  
+    </SeatNumber> 
+  </Seat>  
+  <Seat> 
+    <Name>澳门风云</Name>  
+    <Time>13-00 14-45</Time>  
+    <SeatNumber> 
+      <num>3-1</num>  
+      <num>2-4</num> 
+    </SeatNumber> 
+  </Seat>  
+</Seats>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+<constant name="struts.locale" value="UTF-8"></constant>
+<constant name="struts.devMode"  value="true"></constant>
+ <package name="default" namespace="/" extends="struts-default">
+ 	<action name="loginAction" class="action.loginAction">
+        <result name="customer">main_customer.jsp</result>
+        <result name="manager">main_manager.jsp</result>
+    </action>
+    <action name="movies_customerAction" class="action.movies_customerAction">
+        <result name="success">movies_customer.jsp</result>
+    </action>
+    <action name="movie_customerAction" class="action.movie_customerAction">
+        <result name="success">movie_customer.jsp</result>
+    </action>
+    <action name="movies_managerAction" class="action.movies_managerAction">
+        <result name="success">movies_manager.jsp</result>
+    </action>
+    <action name="movies_addAction" class="action.movies_addAction">
+        <result name="success">main_manager.jsp</result>
+    </action>
+     <action name="seatAction" class="action.seatAction">
+        <result name="success">seat.jsp</result>
+    </action>
+     <action name="seatoneAction" class="action.seatoneAction">
+        <result name="success">seat.jsp</result>
+    </action>
+    <action name="timeAction" class="action.timeAction">
+        <result name="success">time.jsp</result>
+    </action>
+    <action name="timestartAction" class="action.timestartAction">
+        <result name="success">time.jsp</result>
+    </action>
+</package>
+</struts>    

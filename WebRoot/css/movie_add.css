@@ -1,0 +1,43 @@
+form {
+    margin: 50px auto;
+    border: 1px solid #aaa;
+    width: 450px;
+    padding: 50px 60px 50px 10px;
+    border-radius: 5px;
+    background: #fff;
+}
+form li {
+    padding: 5px;
+    width: 350px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    margin: auto;
+}
+
+form p{
+    width: 100px;
+    text-align: right;
+    margin: 0px 10px;
+}
+form li p,input[type="text"],input[type="file"] {
+    float: left;
+    font-family: "Microsoft YaHei";
+}
+
+form li input[type="text"],input[type="file"] {
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+    padding: 0px 5px;
+    width: 200px;
+}
+
+#add {
+    float:left;
+    margin-left: 30px;
+}
+#cancel {
+    float:left;
+    margin-left: 10px;
+}

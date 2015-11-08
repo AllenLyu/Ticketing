@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ShowList> 
+  <Movie> 
+    <Name>功夫</Name>  
+    <Poster>/Ticketing/imags/gongfu.jpg</Poster>
+    <Director>周星驰</Director>  
+    <Actor>周星驰</Actor>  
+    <Type>Action</Type>  
+    <Price>60</Price>  
+    <Schedule data="2015-05-01"> 
+      <Item1>8-00 9-45</Item1>  
+      <Item2>10-00 11-45</Item2> 
+    </Schedule> 
+  </Movie>  
+  <Movie> 
+    <Name>澳门风云</Name>  
+    <Poster>/Ticketing/imags/aomenfengyun.jpg</Poster>
+    <Director>王晶</Director>  
+    <Actor>周润发</Actor>  
+    <Type>Comedy</Type>  
+    <Price>40</Price>  
+    <Schedule data="2015-05-03"> 
+      <Item1>9-00 10-45</Item1>  
+      <Item2>13-00 14-45</Item2> 
+    </Schedule> 
+  </Movie>  
+</ShowList>

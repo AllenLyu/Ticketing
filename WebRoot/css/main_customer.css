@@ -1,0 +1,29 @@
+#content .menu{
+    width: 200px;
+    border: 1px solid #aaa;
+    background: #555;
+    color: #eee;
+    margin: 150px;
+    padding: 30px 0px;
+    box-shadow: 0px 0px 3px #777;
+}
+
+.menu p {
+    cursor: default;
+    padding: 5px 30px;
+}
+.menu p:hover{
+    background: #888;
+}
+
+#content {
+    position: relative;
+}
+img {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    width: 500px;
+    opacity: 0.85;
+    border-radius: 20px;
+}

@@ -1,0 +1,28 @@
+#seats {
+    width: 1000px;
+    margin: 50px auto;
+    height: 400px;
+    background: url("../images/cinema.jpg") center no-repeat;
+    background-clip: border-box;
+}
+
+table p{
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+    border: 2px solid #999;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+form {
+    padding: 90px;
+}
+table {
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px #555;
+    padding: 50px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.85);
+}

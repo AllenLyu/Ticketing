@@ -1,0 +1,28 @@
+#single_movie {
+    width: 900px;
+    height: 300px;
+    padding: 25px;
+    margin: 50px auto;
+    background: #ccc;
+}
+
+#plays {
+    float: right;
+    width: 200px;
+    background: #bbb;
+    padding: 20px;
+    box-shadow: 0px 0px 10px #555;
+    margin: 50px;
+}
+
+#plays p{
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #555;
+    cursor: default;
+}
+#plays p:hover {
+    background: #888;
+}
