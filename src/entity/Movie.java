@@ -81,7 +81,12 @@ public class Movie {
 	}
 
 	public void setItemOne(String itemOne) {
-		ItemOne = itemOne;
+		if("1".equals(itemOne))
+		{
+			ItemOne = "8:30--11:30";
+		}else {
+			ItemOne = null;
+		}
 	}
 
 	public String getItemTwo() {
@@ -89,12 +94,18 @@ public class Movie {
 	}
 
 	public void setItemTwo(String itemTwo) {
-		ItemTwo = itemTwo;
+		if("1".equals(itemTwo))
+		{
+			ItemTwo = "13:30--16:30";
+		}else {
+			ItemTwo = null;
+		}
 	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "name:"+getName()+"\npath:"+getPoster()+"\nDirector:"+getDirector()+"\nActor:"+getActor()+"\nDate:"+getData()+"\nPrice:"+getPrice();
+		return "name:"+getName()+"\npath:"+getPoster()+"\nDirector:"+getDirector()+"\nActor:"+getActor()+"\nDate:"+getData()+"\nPrice:"+getPrice()
+				+"\nMorning:"+getItemOne()+"\nAfternoon"+getItemTwo();
 	}
 }

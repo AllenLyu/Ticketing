@@ -39,7 +39,7 @@ public class DAO {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String sql = "select * from dbo.ShowList inner join dbo.ShowDate on dbo.ShowDate.mid=dbo.ShowList.mid";
+		String sql = "select * from dbo.ShowList left join dbo.ShowDate on dbo.ShowDate.mid=dbo.ShowList.mid";
 		try {
 			rs = st.executeQuery(sql);
 			while(rs.next())
@@ -63,7 +63,7 @@ public class DAO {
 			e.printStackTrace();
 		}
 		ArrayList<Movie> movies = new ArrayList<>();
-		String sql = "select * from dbo.ShowList inner join dbo.ShowDate on dbo.ShowDate.mid=dbo.ShowList.mid";
+		String sql = "select * from dbo.ShowList left join dbo.ShowDate on dbo.ShowDate.mid=dbo.ShowList.mid";
 		try {
 			rs = st.executeQuery(sql);
 			while(rs.next())
@@ -87,6 +87,40 @@ public class DAO {
 		}
 		return movies;
 		
+	}
+	
+	public Movie getMovieByName(String name)
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Movie> movies = new ArrayList<>();
+		String sql = "select * from dbo.ShowList left join dbo.ShowDate on dbo.ShowDate.mid=dbo.ShowList.mid where dbo.ShowList.name='"+name+"'";
+		try {
+			rs = st.executeQuery(sql);
+			while(rs.next())
+			{
+				Movie movie = new Movie();
+				movie.setName(rs.getString("name"));
+				movie.setPoster(rs.getString("path"));
+				movie.setDirector(rs.getString("director"));
+				movie.setActor(rs.getString("actor"));
+				movie.setType(rs.getString("type"));
+				movie.setPrice(Integer.valueOf(rs.getString("price")));
+				movie.setData(rs.getString("date"));
+				movie.setItemOne(rs.getString("morning"));
+				movie.setItemTwo(rs.getString("afternoon"));
+				movies.add(movie);
+				System.out.println(movie);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return movies.get(0);
 	}
 	
 	 public static void main(String [] args)
