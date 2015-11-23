@@ -28,7 +28,6 @@ public class movie_customerAction extends ActionSupport{
 	    DAO dao = new DAO();
 	    HttpServletRequest request = ServletActionContext.getRequest();
 	    String name = request.getParameter("name");
-	    name = new String(name.getBytes("ISO-8859-1"),"utf-8");
 	    movies.add(dao.getMovieByName(name));
 	    for(int i=0;i<movies.size();i++){
 	    	((Movie) movies.get(i)).setSprice((int)(((Movie) movies.get(i)).getPrice()*0.8));

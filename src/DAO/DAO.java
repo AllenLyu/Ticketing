@@ -123,9 +123,51 @@ public class DAO {
 		return movies.get(0);
 	}
 	
+	
+	public boolean[] getSeat(String name,int flag)
+	{
+		boolean result[] = new boolean[18];
+		int originReault=0;
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Movie> movies = new ArrayList<>();
+		String time = flag==1?"morningSeat":"afternoonSeat";
+		String sql = "select * from dbo.ShowList left join dbo.ShowSeat on dbo.ShowList.mid=dbo.ShowSeat.mid where dbo.ShowList.name ='"+name+"'";
+		try {
+			rs = st.executeQuery(sql);
+			while(rs.next())
+			{
+				originReault = rs.getInt(time);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+        for (int i = 0; i<18; i++) {
+            if((originReault&(int)Math.pow(2,i))==(int)Math.pow(2,i))
+            {
+                result[i]=true;
+            }
+            else
+            {
+                result[i]=false;
+            }
+        }
+
+
+        System.out.println(result);
+        return result;
+    }
+	
 	 public static void main(String [] args)
 	 {
 		 DAO dao = new DAO();
-		 dao.getMovies();
+		 dao.getSeat("功夫", 0);
 	 }
 }

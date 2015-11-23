@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
+import DAO.DAO;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import database.QuerySeat;
@@ -13,11 +15,12 @@ import database.QuerySeat;
 public class seatAction extends ActionSupport{
 	private String name;
 	private String time;
-	ArrayList seats=new ArrayList();
-	public ArrayList getSeats() {
+	private boolean[] seats;
+	
+	public boolean[] getSeats() {
 		return seats;
 	}
-	public void setSeats(ArrayList seats) {
+	public void setSeats(boolean[] seats) {
 		this.seats = seats;
 	}
 	public String getName() {
@@ -33,13 +36,15 @@ public class seatAction extends ActionSupport{
 		this.time = time;
 	}
 	public String execute() throws Exception{
-		    HttpServletRequest request = ServletActionContext.getRequest();
-		    QuerySeat queryseat=new QuerySeat();
-			name= request.getParameter("name");
-			time= request.getParameter("time");
-			seats=queryseat.query(name, time);
-			request.getSession().setAttribute("se", seats);
-			request.getSession().setAttribute("name", name);
+		DAO dao = new DAO();
+	    HttpServletRequest request = ServletActionContext.getRequest();
+	    int flag = Integer.parseInt(request.getParameter("flag"));
+	    String name = request.getParameter("name");
+		name= request.getParameter("name");
+		seats=dao.getSeat(name, flag);
+		request.setAttribute("seats", seats);
+		request.setAttribute("name", name);
+		System.out.println(request.getSession());
 		return "success";
 	}
 }

@@ -23,7 +23,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script type="text/javascript" src="./js/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	function postData(flag) {
+		url = "seatAction!execute.action";
+		params={};
+		name = document.getElementById("name").innerHTML.slice(3);
+		var time;
+		params["name"]=name;
+		if(""==flag)
+		{
+			alert("抱歉，该时间本影片还没准备好被您看QAQ");
+		}
+		else 
+		{
+			if("8:30--11:30"==flag)
+			{
+				time = 1;
+				params["flag"]=1;
+			}
+			else
+			{
+				time = 0;
+				params["flag"]=0;
+			}
+			//$.post(url,params);
+			$.ajax({
+			    type:"POST",
+			    url: url,//你的请求程序页面随便啦
+			    async:"false",//同步：意思是当有返回值以后才会进行后面的js程序。
+			    data: params,//请求需要发送的处理数据
+			    success:function(msg){
+			        if (msg) {//根据返回值进行跳转
+			            window.location.href = url+"?name="+name+"&flag="+time;
+			        }
+			    }
+			
+		})
+	}
+	}
+	</script>
   </head>
   
     <body>
@@ -34,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <s:iterator value="movies" >
                 <img class="movie_poster" src="<s:property value='Poster'/>">
                 <ul class="movie_detail">
-                    <li>影片:<s:property value="Name"/></li>
+                    <li id="name">影片:<s:property value="Name"/></li>
                     <li>导演:<s:property value="Director"/></li>
                     <li>演员:<s:property value="Actor"/></li>
                     <li>类型:<s:property value="Type"/></li>
@@ -42,8 +81,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </ul>
                 <div id="plays">
                     <h3>场次</h3>
-                    <p name="button1" onclick="window.location.href='seatAction!execute.action?name=<s:property value="Name"/>&time=<s:property value="ItemOne"/>'"><s:property value='ItemOne'/></p>
-                    <p name="button2" onclick="window.location.href='seatAction!execute.action?name=<s:property value="Name"/>&time=<s:property value="ItemTwo"/>'"><s:property value='ItemTwo'/></p>
+                    <p type="submit" name="button1" onclick="postData(this.innerHTML)"><s:property value='ItemOne'/></p>
+                    <p type="submit" name="button2" onclick="postData(this.innerHTML)"><s:property value='ItemTwo'/></p>
                 </div>
             </s:iterator>
         </div>
