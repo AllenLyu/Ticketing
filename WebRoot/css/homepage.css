@@ -1,4 +1,4 @@
-﻿* {
+* {
 	margin: 0;
 	padding: 0;
 }
@@ -14,15 +14,33 @@ header {
 	box-shadow: 0px 0px 10px #555;
 }
 
-header div {
+#title {
+	display:inline;
 	color: #999;
 	font-size: 45px;
 	font-weight: bold;
 	height: 100px;
 	line-height: 100px;
-	min-width: 1100px;
+	min-width: 300px;
 	width: 80%;
-	margin: auto;
+	margin-left:60px;
+	text-shadow:
+	-1px 0px 0px #ccc,
+	-2px 0px 0px #ccc,
+	1px 0px 0px #eee,
+	2px 0px 0px #eee;
+
+}
+#username {
+	display:inline;
+	color: #999;
+	font-size: 45px;
+	font-weight: bold;
+	height: 100px;
+	line-height: 100px;
+	min-width: 300px;
+	width: 80%;
+	margin-left:600px;
 	text-shadow:
 	-1px 0px 0px #ccc,
 	-2px 0px 0px #ccc,
@@ -56,26 +74,31 @@ header div {
 	opacity: 0.85;
 }
 #select {
+	padding-left:100px;
 	float: left;
-	height: inherit;
-	width: 35%;
-	min-width: 300px;
+	/* height: inherit; */
+	width: 300px;
+	min-width: 100px;
 	color: #777;
 }
 #select_description {
 	margin-top:150px;
-	text-align: right;
+	text-align: left;
 	font-size: 25px;
 }
 #select_group {
 	margin: 20px 25px;
-	text-align: right;
+	text-align: left;
 }
-#select_group input {
-	width: 30px;
+
+#name {
+	width:110px;
+}
+#password {
+	width:110px;
 }
 #select_button {
-	float:right;
+	float:left;
 	background-color: #555;
 	width: 100px;
 	height: 35px;
@@ -86,6 +109,21 @@ header div {
 	margin: 25px 0px;
 	border-radius: 5px;
 	cursor: pointer;
+	
+}
+#select_button2 {
+	float:left;
+	background-color: #555;
+	width: 100px;
+	height: 35px;
+	text-align: center;
+	line-height: 35px;
+	font-size: 15px;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 25px 0px;
+	margin-left:5px;
 }
 #select_button:active {
 	margin-top: 26px;

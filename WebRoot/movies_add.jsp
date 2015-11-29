@@ -24,9 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<header>
-		<div>天河订票系统</div>
-	</header>
+	<jsp:include page="./header.jsp" flush="true"/>
     <form action="movies_addAction!execute.action"  method="post">
 	<ul>
 		<li><p>影片名:</p><input type="text" name="name"/></li>

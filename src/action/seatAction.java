@@ -44,7 +44,7 @@ public class seatAction extends ActionSupport{
 		seats=dao.getSeat(name, flag);
 		request.setAttribute("seats", seats);
 		request.setAttribute("name", name);
-		System.out.println(request.getSession());
+		System.out.println(seats);
 		return "success";
 	}
 }

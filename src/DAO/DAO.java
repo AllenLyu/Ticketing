@@ -89,6 +89,31 @@ public class DAO {
 		
 	}
 	
+	public String login(boolean isMaster,String name)
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String table = isMaster?"dbo.Master":"dbo.MUser";
+		String pwd="";
+		String sql = "select "+table +".pwd from "+ table + " where "+table +".name = '" + name +"'";
+		try {
+			rs = st.executeQuery(sql);
+			while(rs.next())
+			{
+				pwd = rs.getString("pwd");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pwd;
+		
+	}
+	
 	public Movie getMovieByName(String name)
 	{
 		try {
@@ -169,5 +194,6 @@ public class DAO {
 	 {
 		 DAO dao = new DAO();
 		 dao.getSeat("功夫", 0);
+		 System.out.println("123456".hashCode());
 	 }
 }

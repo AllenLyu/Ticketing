@@ -6,8 +6,9 @@
 <constant name="struts.devMode"  value="true"></constant>
  <package name="default" namespace="/" extends="struts-default">
  	<action name="loginAction" class="action.loginAction">
-        <result name="customer">main_customer.jsp</result>
-        <result name="manager">main_manager.jsp</result>
+        <result name="customer_success">main_customer.jsp</result>
+        <result name="manager_success">main_manager.jsp</result>
+        <result name="error">main_manager.jsp</result>
     </action>
     <action name="movies_customerAction" class="action.movies_customerAction">
         <result name="success">movies_customer.jsp</result>

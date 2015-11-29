@@ -13,9 +13,6 @@
 <base href="<%=basePath%>">
 
 <title>订票系统</title>
-<link rel="stylesheet" href="./css/homepage.css" />
-<link rel="stylesheet" href="./css/single_movie.css" />
-<link rel="stylesheet" href="./css/seat.css" />
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -29,9 +26,7 @@
 
 <body>
 	
-	<header>
-	<div>天河订票系统</div>
-	</header>
+	<jsp:include page="./header.jsp" flush="true"/>
 	<div id="seats">
 		<form name="form" id="form" method="post">
 			<table class="happy">
@@ -80,20 +75,21 @@
 	window.onload = change();
 	<%
 		int k, n;
-		String name = (String) request.getSession().getAttribute("name");
+		String name = (String) request.getAttribute("name");
 		request.getSession().setAttribute("name", name);
 		boolean[] seats;
-		seats = (boolean[]) request.getSession().getAttribute("seats");
+		seats = (boolean[]) request.getAttribute("seats");
 		
 	%>
 	function change()
 	{
 		var isBooked = new Array(18);
-		<% 
-		for(int i = 0; i < 18; i++) { 
-		%> 
-			isBooked[<%=i%>] = <%=seats[i]%>; 
-		<%}%> 
+		 
+		<%for(int i = 0; i != 18; i++) {%>
+		 isBooked[<%=i%>] = <%=seats[i]%>;
+		<%}%>
+		
+		
 		for(var i=1;i<19;i++)
 		{
 			if(isBooked[i-1])
@@ -127,6 +123,7 @@
 	}
 	</script>
 	<footer>
+	<%out.print(name); %>>
 	 </footer>
 </body>
 </html>

@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//$.post(url,params);
 			$.ajax({
 			    type:"POST",
-			    url: url,//你的请求程序页面随便啦
+			    url: url,//你的请求程序页面
 			    async:"false",//同步：意思是当有返回值以后才会进行后面的js程序。
 			    data: params,//请求需要发送的处理数据
 			    success:function(msg){
@@ -66,9 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
     <body>
-        <header>
-            <div>天河订票系统</div>
-        </header>
+        <jsp:include page="./header.jsp" flush="true"/>
         <div id="single_movie" class="movie_unit">
             <s:iterator value="movies" >
                 <img class="movie_poster" src="<s:property value='Poster'/>">
