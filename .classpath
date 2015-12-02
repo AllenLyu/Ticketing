@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/saxon-xqj-9.x.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/json-20151123.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

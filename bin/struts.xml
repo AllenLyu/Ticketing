@@ -8,7 +8,7 @@
  	<action name="loginAction" class="action.loginAction">
         <result name="customer_success">main_customer.jsp</result>
         <result name="manager_success">main_manager.jsp</result>
-        <result name="error">main_manager.jsp</result>
+        <result name="error">error.jsp</result>
     </action>
     <action name="movies_customerAction" class="action.movies_customerAction">
         <result name="success">movies_customer.jsp</result>
@@ -25,7 +25,7 @@
      <action name="seatAction" class="action.seatAction">
         <result name="success">seat.jsp</result>
     </action>
-     <action name="seatoneAction" class="action.seatoneAction">
+     <action name="buyAction" class="action.buyAction">
         <result name="success">seat.jsp</result>
     </action>
     <action name="timeAction" class="action.timeAction">

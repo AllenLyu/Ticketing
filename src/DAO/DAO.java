@@ -114,6 +114,31 @@ public class DAO {
 		
 	}
 	
+	public int getUserId(boolean isMaster,String name)
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String table = isMaster?"dbo.Master":"dbo.MUser";
+		int id=0;
+		String sql = "select "+table +".uid from "+ table + " where "+table +".name = '" + name +"'";
+		try {
+			rs = st.executeQuery(sql);
+			while(rs.next())
+			{
+				id = rs.getInt("uid");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+		
+	}
+	
 	public Movie getMovieByName(String name)
 	{
 		try {
@@ -159,7 +184,6 @@ public class DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ArrayList<Movie> movies = new ArrayList<>();
 		String time = flag==1?"morningSeat":"afternoonSeat";
 		String sql = "select * from dbo.ShowList left join dbo.ShowSeat on dbo.ShowList.mid=dbo.ShowSeat.mid where dbo.ShowList.name ='"+name+"'";
 		try {
@@ -189,6 +213,9 @@ public class DAO {
         System.out.println(result);
         return result;
     }
+	
+	
+	
 	
 	 public static void main(String [] args)
 	 {

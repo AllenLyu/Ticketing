@@ -40,11 +40,10 @@ public class seatAction extends ActionSupport{
 	    HttpServletRequest request = ServletActionContext.getRequest();
 	    int flag = Integer.parseInt(request.getParameter("flag"));
 	    String name = request.getParameter("name");
-		name= request.getParameter("name");
 		seats=dao.getSeat(name, flag);
 		request.setAttribute("seats", seats);
 		request.setAttribute("name", name);
-		System.out.println(seats);
+		request.setAttribute("time", flag==1?"morningSeat":"afternoonSeat");
 		return "success";
 	}
 }

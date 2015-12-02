@@ -13,7 +13,9 @@
 <base href="<%=basePath%>">
 
 <title>订票系统</title>
-
+<link rel="stylesheet" href="./css/homepage.css" />
+<link rel="stylesheet" href="./css/single_movie.css" />
+<link rel="stylesheet" href="./css/seat.css" />
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -63,15 +65,19 @@
 							onclick="javascript:location.href='main_customer.jsp'"/>
 					</td>		
 					<td style="text-align:right;">
-						<input class="return_button" type="button" name="button" value="返回"
-							onclick="javascript:location.href='main_customer.jsp'"/>
+						<input class="return_button" type="button" name="button" value="购买"
+							onclick="buy()"/>
 					</td>	
 				</tr>
 			</table>
 			
 		</form>
 	</div>
+	<script type="text/javascript" src="./js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="./js/json2.js"></script>
 	<script Charset="UTF-8" type="text/javascript">
+	var param = new Array();
+	var seat = new Array();
 	window.onload = change();
 	<%
 		int k, n;
@@ -104,26 +110,57 @@
 		var color = document.getElementById(id).style.background;
 		if (color == "gray") {
 			alert("此票已售出！");
-		} else 
+		} else if(color=="")
 		{
-			if (num == "2-5" || num == "2-6")
-			{
-				alert("2-5和2-6是情侣座位，须同时购买，确定购买？");
-			}
-			var flag = window.confirm("确定购买？");
-			if (flag) 
-			{
-				var form = document.getElementById("form");
-				form.action = "seatoneAction!execute.action?time=<s:property value='time'/>&num="
-						+ num;
-				form.submit();
-			}
+			document.getElementById(id).style.background="red";
+			param.push(id);
+			seat.push(e.innerHTML);
+		}
+		else
+		{
+			document.getElementById(id).style.background="";
+			param.pop();
+			seat.pop();
 		}
 
 	}
+	
+	function buy()
+	{
+		url = "buyAction!execute.action";
+		params={};
+		
+		var strinfo="";
+		var numinfo = 0;
+		for (var int = 0; int < seat.length; int++) {
+			strinfo = seat[int]+"," + strinfo;
+			numinfo = numinfo + Math.pow(2, param[int]-1);
+		}
+		strinfo = strinfo.substring(0, strinfo.length-1);
+		
+		params["num"]=numinfo;
+		params["info"]=strinfo;
+		window.
+		$.ajax({
+		    type:"POST",
+		    url: url,//你的请求程序页面
+		    async:"false",//同步：意思是当有返回值以后才会进行后面的js程序。
+		    data: params,//请求需要发送的处理数据
+		    success:function(msg){
+		        if (msg) {//根据返回值进行跳转
+		        	show();
+		        }
+		    }
+		
+	})
+	}
+	
+	function show()
+	{
+		alert("success!!");
+	}
 	</script>
 	<footer>
-	<%out.print(name); %>>
 	 </footer>
 </body>
 </html>

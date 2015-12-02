@@ -40,6 +40,7 @@ public class loginAction extends ActionSupport {
 		this.setPassword(((String) request.getParameter("pwd")));
 		boolean isMaster = this.getCharactor().equals("customer")?false:true;
 		request.getSession().setAttribute("username", name);
+		request.getSession().setAttribute("uid", getId(isMaster, name));
 		if(isMaster)
 		{
 			
@@ -58,6 +59,12 @@ public class loginAction extends ActionSupport {
 		String pwd = dao.login(isMaster, name);
 		return (this.getPassword().hashCode()+"").equals(pwd);
 		
+	}
+	
+	private int getId(boolean isMaster,String name)
+	{
+		DAO dao = new DAO();
+		return dao.getUserId(isMaster, name);
 	}
 
 }
