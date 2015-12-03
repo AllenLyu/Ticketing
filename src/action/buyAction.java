@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.json.JSONObject;
 
+import DAO.DAO;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import database.AddoneSeat;
@@ -24,8 +26,13 @@ public class buyAction extends ActionSupport{
             m=m&(m-1);
             count++;
         }
-        System.out.println(count);
-		System.out.println(request.getParameter("num"));
+	    String name = (String) request.getSession().getAttribute("name");
+	    int price = (int)request.getSession().getAttribute("price")*count;
+	    String username = (String) request.getSession().getAttribute("username");
+	    String time = (String) request.getSession().getAttribute("time");
+	    String info = request.getParameter("info");
+	    DAO dao = new DAO();
+	    dao.buy(username, time, num, name+":"+info, price,name);
 		return "success";
 	}
 }

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import entity.Movie;
+import entity.Trade;
 
 public class DAO {
 
@@ -214,8 +215,55 @@ public class DAO {
         return result;
     }
 	
+	public void buy(String username,String time,int num,String info,int price,String name) throws SQLException
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String sql1 = "update dbo.ShowSeat set dbo.ShowSeat."+time+"= dbo.ShowSeat.morningSeat+"+num+" from "
+				+ "dbo.ShowSeat left join dbo.ShowList on dbo.ShowSeat.mid"
+				+ " = dbo.ShowList.mid where dbo.ShowList.name = '"+name+"'";
+		String sql2 = "declare @num int "
+				+ "declare @u int "
+				+ "select @num = Max(dbo.Trade.tid) from dbo.Trade "
+				+ "select @u = dbo.MUser.uid from dbo.MUser where dbo.MUser.name = '"+username+"' "
+				+ "insert into dbo.Trade (dbo.Trade.tid,dbo.Trade.uid,dbo.Trade.price,dbo.Trade.info) values ( @num+1,@u,"+price+",'"+info+"');";
+		st.executeUpdate(sql1);
+		st.executeUpdate(sql2);
+	}
 	
 	
+	public ArrayList getTrade(String username)
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Trade> trades = new ArrayList<>();
+		String sql = "select * from dbo.Trade left join dbo.MUser on dbo.Trade.uid=dbo.MUser.uid where dbo.MUser.name='"+username+"'";
+		try {
+			rs = st.executeQuery(sql);
+			while(rs.next())
+			{
+				Trade trade = new Trade();
+				trade.setPrice(rs.getInt("price"));
+				trade.setInfo(rs.getString("info"));
+				trades.add(trade);
+				System.out.println(trade);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return trades;
+	
+	}
 	
 	 public static void main(String [] args)
 	 {

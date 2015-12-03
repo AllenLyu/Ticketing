@@ -42,8 +42,8 @@ public class seatAction extends ActionSupport{
 	    String name = request.getParameter("name");
 		seats=dao.getSeat(name, flag);
 		request.setAttribute("seats", seats);
-		request.setAttribute("name", name);
-		request.setAttribute("time", flag==1?"morningSeat":"afternoonSeat");
+		request.getSession().setAttribute("name", name);
+		request.getSession().setAttribute("time", flag==1?"morningSeat":"afternoonSeat");
 		return "success";
 	}
 }

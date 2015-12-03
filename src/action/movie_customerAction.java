@@ -32,6 +32,7 @@ public class movie_customerAction extends ActionSupport{
 	    for(int i=0;i<movies.size();i++){
 	    	((Movie) movies.get(i)).setSprice((int)(((Movie) movies.get(i)).getPrice()*0.8));
 	    }
+	    request.getSession().setAttribute("price", dao.getMovieByName(name).getPrice());
 		return "success";
 
 }

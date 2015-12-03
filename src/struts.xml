@@ -26,7 +26,10 @@
         <result name="success">seat.jsp</result>
     </action>
      <action name="buyAction" class="action.buyAction">
-        <result name="success">seat.jsp</result>
+        <result name="success">user_center.jsp</result>
+    </action>
+    <action name="userAction" class="action.userAction">
+        <result name="success">user_center.jsp</result>
     </action>
     <action name="timeAction" class="action.timeAction">
         <result name="success">time.jsp</result>

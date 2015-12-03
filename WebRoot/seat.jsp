@@ -148,6 +148,7 @@
 		    data: params,//请求需要发送的处理数据
 		    success:function(msg){
 		        if (msg) {//根据返回值进行跳转
+		        	window.location.href = "userAction!execute.action";
 		        	show();
 		        }
 		    }

@@ -8,6 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <header>
 <div>
 		<div id="title">在线订票系统</div> 
-		<div id="username"><%out.print(session.getAttribute("username")); %></div> 
+		<div id="username" onclick = "location='userAction!execute.action'"><%out.print(session.getAttribute("username")); %></div> 
 </div>
 </header>
