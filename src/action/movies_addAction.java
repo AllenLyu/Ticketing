@@ -1,5 +1,14 @@
 package action;
 
+
+
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
+
+import DAO.DAO;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import database.AddMovies;
@@ -8,7 +17,9 @@ import entity.Movie;
 
 public class movies_addAction  extends ActionSupport{
 	private String name;
-	private String poster;
+	private File poster;
+	private String posterFileName;
+	private String posterContentType;;
 	private String director;
 	private String actor;
 	private String type;
@@ -24,13 +35,7 @@ public class movies_addAction  extends ActionSupport{
 		this.name = name;
 	}
 
-	public String getPoster() {
-		return poster;
-	}
-
-	public void setPoster(String poster) {
-		this.poster = poster;
-	}
+	
 
 	public String getDirector() {
 		return director;
@@ -87,13 +92,43 @@ public class movies_addAction  extends ActionSupport{
 	public void setItem2(String item2) {
 		this.item2 = item2;
 	}
+	
+	public File getPoster() {
+		return poster;
+	}
+
+	public void setPoster(File poster) {
+		this.poster = poster;
+	}
+
+	public String getPosterFileName() {
+		return posterFileName;
+	}
+
+	public void setPosterFileName(String posterFileName) {
+		this.posterFileName = posterFileName;
+	}
+
+	public String getPosterContentType() {
+		return posterContentType;
+	}
+
+	public void setPosterContentType(String posterContentType) {
+		this.posterContentType = posterContentType;
+	}
+	
+	
+	
+	
 
 	public String execute() throws Exception{
 		Movie movie=new Movie();
-		AddMovies addmovies=new AddMovies();
-		AddSeat   addseat=new AddSeat();
 		//int length=this.getClass().getClassLoader().getResource("").getPath().length()-17;
-	    String path="/Ticketing/imags/"+this.getPoster();
+	    String path="/Ticketing/imags/"+this.getPosterFileName();
+	    File destFile = new File(ServletActionContext.getServletContext().getRealPath("/imags"),this.getPosterFileName());
+	    FileUtils.copyFile(poster, destFile);
+	    
+	    
 		movie.setName(this.getName());
 		movie.setPoster(path);
 		movie.setDirector(this.getDirector());
@@ -103,9 +138,12 @@ public class movies_addAction  extends ActionSupport{
 		movie.setData(this.getData());
 		movie.setItemOne(this.getItem1());
 		movie.setItemTwo(this.getItem2());
-		addmovies.addMovie(movie);
-		addseat.addseat(this.name, this.getItem1());
-		addseat.addseat(this.name, this.getItem2());
+		
+		DAO dao = new DAO();
+		dao.addMovie(movie, Integer.parseInt(this.getItem1()), Integer.parseInt(this.getItem2()));
+		
 		return  "success";
 	}
+
+	
 }

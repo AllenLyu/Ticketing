@@ -29,17 +29,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
         <jsp:include page="./header.jsp" flush="true"/>
         <div id="single_movie" class="movie_unit">
-        	<table border = "1px" style = "margin:auto">
-            <s:iterator value="trades" >
-            	<tr>
-                
-                    <td><li id="name">购票记录</li></td>
-                    <td><li>价格:<s:property value="price"/></li></td>
-                    <td><li>信息:<s:property value="info"/></li></td>
-                
-                </tr>
+        <table border = "1px" style = "margin:auto">
+            <s:iterator value="users" >
+                <tr>
+                    <td><li id="name">我的信息</li></td>
+                    <td><li>用户名:<s:property value="name"/></li></td>
+                    <td><li>id:<s:property value="uid"/></li></td>
+                    <td><li>性别:<s:property value="sex"/></li></td>
+                    <td><li>手机号:<s:property value="phone"/></li></td>
+              </tr>
             </s:iterator>
             </table>
+            
         </div>
         <div id="single_movie" class="movie_unit">
         	<table border = "1px" style = "margin:auto">

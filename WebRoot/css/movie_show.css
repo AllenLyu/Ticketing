@@ -21,6 +21,7 @@
 
 .movie_poster {
     height: 250px;
+    width:188px;
     margin: 25px 50px 25px 80px;
     float: left;
 }

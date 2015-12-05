@@ -25,7 +25,7 @@ form li p,input[type="text"],input[type="file"] {
     font-family: "Microsoft YaHei";
 }
 
-form li input[type="text"],input[type="file"] {
+form li input[type="text"],input[type="file"],input[type="password"] {
     height: 30px;
     line-height: 30px;
     margin: 5px;

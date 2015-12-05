@@ -15,12 +15,13 @@ import entity.Movie;
 
 public class userAction extends ActionSupport{
 	
-	private ArrayList trades;
+	private ArrayList trades,users;
 	public String execute() throws Exception{
 	    DAO dao = new DAO();
 	    HttpServletRequest request = ServletActionContext.getRequest();
 	    String username = (String) request.getSession().getAttribute("username");
 	    trades = dao.getTrade(username);
+	    users = dao.getUser(username);
 		return "success";
 
 	}
@@ -29,5 +30,11 @@ public class userAction extends ActionSupport{
 	}
 	public void setTrades(ArrayList trades) {
 		this.trades = trades;
+	}
+	public ArrayList getUsers() {
+		return users;
+	}
+	public void setUsers(ArrayList users) {
+		this.users = users;
 	}
 }

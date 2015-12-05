@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							　<input type="radio" name="charactor" value="manager">管理员</input>
 						</form>
                         <p id="select_button" onclick="javascript:document.getElementById('login_form').submit()">确 认</p>
-                        <p id="select_button2" onclick="javascript:document.getElementById('login_form').submit()">注 册</p>
+                        <p id="select_button2" onclick="javascript:location.href='user_add.jsp'">注 册</p>
 					</div>
 				</div>
 			</div>

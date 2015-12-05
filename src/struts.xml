@@ -31,6 +31,9 @@
     <action name="userAction" class="action.userAction">
         <result name="success">user_center.jsp</result>
     </action>
+    <action name="userAddAction" class="action.userAddAction">
+        <result name="success">login.jsp</result>
+    </action>
     <action name="timeAction" class="action.timeAction">
         <result name="success">time.jsp</result>
     </action>

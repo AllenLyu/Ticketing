@@ -32,7 +32,7 @@ public class buyAction extends ActionSupport{
 	    String time = (String) request.getSession().getAttribute("time");
 	    String info = request.getParameter("info");
 	    DAO dao = new DAO();
-	    dao.buy(username, time, num, name+":"+info, price,name);
+	    dao.buy(username, time, num, name+","+time+":"+info, price,name);
 		return "success";
 	}
 }

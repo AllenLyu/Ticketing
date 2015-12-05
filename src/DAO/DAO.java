@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import entity.Movie;
 import entity.Trade;
+import entity.User;
 
 public class DAO {
 
@@ -224,7 +225,7 @@ public class DAO {
 			e.printStackTrace();
 		}
 		
-		String sql1 = "update dbo.ShowSeat set dbo.ShowSeat."+time+"= dbo.ShowSeat.morningSeat+"+num+" from "
+		String sql1 = "update dbo.ShowSeat set dbo.ShowSeat."+time+"= dbo.ShowSeat."+time+"+"+num+" from "
 				+ "dbo.ShowSeat left join dbo.ShowList on dbo.ShowSeat.mid"
 				+ " = dbo.ShowList.mid where dbo.ShowList.name = '"+name+"'";
 		String sql2 = "declare @num int "
@@ -234,6 +235,69 @@ public class DAO {
 				+ "insert into dbo.Trade (dbo.Trade.tid,dbo.Trade.uid,dbo.Trade.price,dbo.Trade.info) values ( @num+1,@u,"+price+",'"+info+"');";
 		st.executeUpdate(sql1);
 		st.executeUpdate(sql2);
+	}
+	
+	public void addMovie(Movie movie,int item1,int item2) throws SQLException
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String sql = "declare @id int "
+				+ "select @id= Max(ShowDate.sid) from dbo.ShowDate "
+				+ " insert into dbo.ShowList (mid,name,path,director,actor,type,price) values ("+movie.getName().hashCode()+",'"+movie.getName()+"','"+movie.getPoster()+"','"+movie.getDirector()+"','"+movie.getActor()+"','"+movie.getType()+"',"+movie.getPrice()+")"
+				+ " insert into dbo.ShowSeat (mid,morningSeat,afternoonSeat) values ("+movie.getName().hashCode()+",0,0)"
+				+ " insert into dbo.ShowDate (sid,mid,date,morning,afternoon) values (@id+1,"+movie.getName().hashCode()+",'"+movie.getData()+"','"+item1+"','"+item2+"')";
+		st.executeUpdate(sql);
+	
+	}
+	
+	
+	public void addUser(User user) throws SQLException
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String sql = "insert into dbo.MUser (uid,name,pwd,sex,telephone) values ("+user.getName().hashCode()+",'"+user.getName()+"','"+user.getPwd()+"','"+user.getSex()+"','"+user.getPhone()+"')";
+		st.executeUpdate(sql);
+	
+	}
+	
+	
+	public ArrayList getUser(String username)
+	{
+		try {
+			con();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<User> users = new ArrayList<>();
+		String sql = "select * from dbo.MUser where dbo.MUser.name='"+username+"'";
+		try {
+			rs = st.executeQuery(sql);
+			while(rs.next())
+			{
+				User user = new User();
+				user.setName(username);
+				user.setUid(rs.getInt("uid"));
+				user.setSex(rs.getString("sex"));
+				user.setPhone(rs.getString("telephone"));
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return users;
+	
 	}
 	
 	

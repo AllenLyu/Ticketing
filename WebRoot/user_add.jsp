@@ -25,19 +25,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 	<jsp:include page="./header.jsp" flush="true"/>
-    <form action="movies_addAction!execute.action"  method="post" enctype="multipart/form-data">
+    <form action="userAddAction!execute.action"  method="post" ">
 	<ul>
-		<li><p>影片名:</p><input type="text" name="name"/></li>
-		<li><p>图片名:</p><input type="file"name="poster"/></li>
-		<li><p>导演:</p><input type="text" name="director"/></li>
-		<li><p>主演:</p><input type="text" name="actor"/></li>
-		<li><p>类型:</p><input type="text" name="type"/></li>
-		<li><p>价格:</p><input type="text" name="price"/></li>
-		<li><p>时间段:</p><input placeholder="示例：2015-05-11" type="text" name="data"/></li>
-		<li><p>场次1:</p><input checked="checked" type="radio" name="item1" value="1">放映</input><input checked="checked" type="radio" name="item1" value="0">不放映</input></input><br/></li>
-		<li><p>场次2:</p><input checked="checked" type="radio" name="item2" value="1">放映</input><input checked="checked" type="radio" name="item2" value="0">不放映</input><br/></li>
+		<li><p>用户名:</p><input type="text" name="name"/></li>
+		<li><p>密码:</p><input type="password"name="pwd"/></li>
+		<li><p>手机号:</p><input type="text" name="phone"/></li>
+		<li><p>性别:</p><input checked="checked" type="radio" name="sex" value="男">男</input><input checked="checked" type="radio" name="sex" value="女">女</input><br/></li>
 		<li>
-			<input class="return_button" id="add" type="submit" name="add" value="添加"/>
+			<input class="return_button" id="add" type="submit" name="add" value="注册"/>
 			<input class="return_button" id="cancel" type="button" name="delete" value="取消" onclick="javascript:location.href='main_manager.jsp'"/>
 		</li>
 	</ul>
